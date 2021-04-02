@@ -534,84 +534,103 @@ class Application:
         self.root = tk.Tk()
         self.root.title("Gesture Vocolizer")
         self.root.protocol('WM_DELETE_WINDOW', self.destructor)
+        # self.root['background']='#E2EBF4'
+        self.root.configure(background='#FFFFFF')
         # self.root.geometry("1300x1100")
         RWidth=self.root.winfo_screenwidth()
         RHeight=self.root.winfo_screenheight()
         self.root.geometry("%dx%d+0+0" % (RWidth, RHeight))#(width x hight)
         self.root.iconbitmap(r'GV.ico')
         
-        self.panel = tk.Label(self.root)
+        self.panel = tk.Label(self.root,bg='#FFFFFF')
         self.panel.place(x = 135, y = 27, width = 650, height = 550)
         
         self.panel2 = tk.Label(self.root) # initialize image panel
         self.panel2.place(x = 460, y = 75, width = 300, height = 300)
         
-        self.T = tk.Label(self.root)
+        self.T = tk.Label(self.root,bg='#FFFFFF')
         self.T.place(x=200,y = 3)
         self.T.config(text = "Gesture Vocolizer",font=("courier",35,"bold"))
         
-        self.panel3 = tk.Label(self.root) # Current SYmbol
+        self.panel3 = tk.Label(self.root,bg='#FFFFFF') # Current SYmbol
         self.panel3.place(x = 400,y=560)
         
-        self.T1 = tk.Label(self.root)
+        self.T1 = tk.Label(self.root,bg='#FFFFFF')
         self.T1.place(x = 10,y = 560)
         self.T1.config(text="Character :",font=("Courier",30,"bold"))
         
-        self.panel4 = tk.Label(self.root) # Word
+        self.panel4 = tk.Label(self.root,bg='#FFFFFF') # Word
         self.panel4.place(x = 220,y=610)
         
-        self.T2 = tk.Label(self.root)
+        self.T2 = tk.Label(self.root,bg='#FFFFFF')
         self.T2.place(x = 10,y = 610)
         self.T2.config(text ="Word :",font=("Courier",30,"bold"))
         
-        self.panel5 = tk.Label(self.root) # Sentence
+        self.panel5 = tk.Label(self.root,bg='#FFFFFF') # Sentence
         self.panel5.place(x = 350,y=660)
         
-        self.T3 = tk.Label(self.root)
+        self.T3 = tk.Label(self.root,bg='#FFFFFF')
         self.T3.place(x = 10,y = 660)
         self.T3.config(text ="Sentence :",font=("Courier",30,"bold"))
         
-        ''' Speak Button '''
-        self.photo1 = tk.PhotoImage(file="testbtn4.png")
-        self.b1=tk.Button(text ="Save", image=self.photo1, command = self.listen_sentance, border=0)
-        self.b1.place(x = 900, y = 75)
-        
         
         ''' Word To Sentence Button '''
-        self.b2=tk.Button(text ="append_word_sentance" , command = self.append_word_sentance)
-        self.b2.place(x = 1000, y = 75)
+        self.APPENDWORD = tk.PhotoImage(file="APPENDWORD.png")
+        self.b1=tk.Button(text ="append_word_sentance", image=self.APPENDWORD, bg='#FFFFFF',command = self.append_word_sentance, border=0)
+        self.b1.place(x = 850, y = 50)
         
-        ''' save file Button '''
-        self.b3=tk.Button(text =" Save As " , command = self.saveFile)
-        self.b3.place(x = 900, y = 120)
         
-        ''' Read all Sentence Button '''
-        self.b4=tk.Button(text =" ReadSaved " , command = self.saved_conv)
-        self.b4.place(x = 1000, y = 120 )
+        ''' Speak Button '''
+        self.SPEAK = tk.PhotoImage(file="SPEAK.png")
+        self.b2=tk.Button(text ="Save" ,image=self.SPEAK, command = self.listen_sentance,bg='#FFFFFF' , border=0 )
+        self.b2.place(x = 1200, y = 50)
         
-        ''' listen Conversation  '''
-        self.b5=tk.Button(text =" ListenSaved " , command = self.listen_Conversation)
-        self.b5.place(x = 900, y = 160 )
+        '''Append sentance to conversation boutton'''
+        self.APPENDSENTENCE = tk.PhotoImage(file="APPENDSENTENCE.png")
+        self.b4=tk.Button(text =" append_sentance " ,image=self.APPENDSENTENCE, command = self.append_sentance,bg='#FFFFFF' , border=0)
+        self.b4.place(x = 850, y = 150)
+       
         
-        ''' save all Sentence Button '''
-        #'''Append sentance to conversation boutton'''
-        self.b4=tk.Button(text =" append_sentance " , command = self.append_sentance)
-        self.b4.place(x = 1000, y = 160 )
+       
+          # ''' listen Conversation  '''LISTENSAVED
+        self.LISTENSAVED = tk.PhotoImage(file="LISTENSAVED.png")
+        self.b5=tk.Button(text =" ListenSaved ",image=self.LISTENSAVED, command = self.listen_Conversation,bg='#FFFFFF' , border=0)
+        self.b5.place(x = 1200, y = 150 )
         
-        ''' clear sentance  '''
-        self.b5=tk.Button(text =" clear sentance " , command = self.clear_sentance)
-        self.b5.place(x = 900, y = 200 )
+        # # ''' save file Button '''APPENDSENTENCE
+        
+        self.SAVE = tk.PhotoImage(file="SAVE.png")
+        self.b3=tk.Button(text =" Save As ",image=self.SAVE, command = self.saveFile,bg='#FFFFFF' , border=0)
+        self.b3.place(x = 850, y = 250)
+        
+        # ''' Read all Sentence Button '''READSAVED
+        self.READSAVED = tk.PhotoImage(file="READSAVED.png")
+        self.b4=tk.Button(text =" ReadSaved ",image=self.READSAVED, command = self.saved_conv,bg='#FFFFFF' , border=0)
+        self.b4.place(x = 1200, y = 250 )
+        
+        ''' Open File '''
+        self.OPENSAVED = tk.PhotoImage(file="OPENSAVED.png")
+        self.b7=tk.Button(text =" Open File " ,image=self.OPENSAVED, command = self.openFile, border=0,bg='#FFFFFF')
+        self.b7.place(x = 850, y = 350 )
+        
         
         ''' clear word  '''
-        self.b4=tk.Button(text =" clear word " , command = self.clear_word )
-        self.b4.place(x = 1000, y = 200 )
+        self.CLEARWORD = tk.PhotoImage(file="CLEARWORD.png")
+        self.b4=tk.Button(text =" clear word " ,image=self.CLEARWORD , command = self.clear_word , border=0,bg='#FFFFFF')
+        self.b4.place(x = 1200, y = 350 )
+        
+        ''' clear sentance  '''
+        self.CLEARSENTENCE = tk.PhotoImage(file="CLEARSENTENCE.png")
+        self.b5=tk.Button(text =" clear sentance ",image=self.CLEARSENTENCE , command = self.clear_sentance , border=0,bg='#FFFFFF')
+        self.b5.place(x = 850, y = 450 )
+        
+       
         
         ''' clear all '''
-        self.b5=tk.Button(text =" clear all " , command = self.clear_conv)
-        self.b5.place(x = 900, y = 240 )
-        ''' Open File '''
-        self.b7=tk.Button(text =" Open File " , command = self.openFile)
-        self.b7.place(x = 1000, y = 240 )
+        self.CLEARALL = tk.PhotoImage(file="CLEARALL.png")
+        self.b5=tk.Button(text =" clear all " ,image=self.CLEARALL , command = self.clear_conv,border=0,bg='#FFFFFF')
+        self.b5.place(x = 1200, y = 450 )
+       
         
         # self.b1.pack()
         self.saved_text_data=""
